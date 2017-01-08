@@ -60,6 +60,7 @@ var (
 			FileMode:    0666,
 		},
 	}
+	// DefaultAllowDevices are devices that are allowed and created.
 	DefaultAllowedDevices = append([]*Device{
 		// allow mknod for any device
 		{

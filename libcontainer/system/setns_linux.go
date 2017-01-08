@@ -23,10 +23,12 @@ var setNsMap = map[string]uintptr{
 
 var sysSetns = setNsMap[fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH)]
 
+// SysSetns returns the setns syscall number on caller's platform.
 func SysSetns() uint32 {
 	return uint32(sysSetns)
 }
 
+// Setns is wrapper of setns syscall.
 func Setns(fd uintptr, flags uintptr) error {
 	ns, exists := setNsMap[fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH)]
 	if !exists {

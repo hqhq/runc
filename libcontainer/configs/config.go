@@ -11,6 +11,7 @@ import (
 	"github.com/opencontainers/runtime-spec/specs-go"
 )
 
+// Rlimit represents system rlimit entries.
 type Rlimit struct {
 	Type int    `json:"type"`
 	Hard uint64 `json:"hard"`
@@ -37,6 +38,7 @@ type Seccomp struct {
 // Action is taken upon rule match in Seccomp
 type Action int
 
+// All kinds of actions used in seccomp rules.
 const (
 	Kill Action = iota + 1
 	Errno
@@ -48,6 +50,7 @@ const (
 // Operator is a comparison operator to be used when matching syscall arguments in Seccomp
 type Operator int
 
+// All kinds of operators used in seccomp rules.
 const (
 	EqualTo Operator = iota + 1
 	NotEqualTo
@@ -185,6 +188,7 @@ type Config struct {
 	NoNewKeyring bool `json:"no_new_keyring"`
 }
 
+// Hooks contains all kinds of hooks we support.
 type Hooks struct {
 	// Prestart commands are executed after the container namespaces are created,
 	// but before the user supplied command is executed from init.
@@ -197,6 +201,7 @@ type Hooks struct {
 	Poststop []Hook
 }
 
+// UnmarshalJSON
 func (hooks *Hooks) UnmarshalJSON(b []byte) error {
 	var state struct {
 		Prestart  []CommandHook

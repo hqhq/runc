@@ -6,11 +6,15 @@ import (
 )
 
 var (
-	// The current operating system does not provide the required data for user lookups.
+	// ErrUnsupported returns when current operating system does not
+	// provide the required data for user lookups.
 	ErrUnsupported = errors.New("user lookup: operating system does not provide passwd-formatted data")
-	// No matching entries found in file.
+	// ErrNoPasswdEntries returns when there is no matching password
+	// entries found in file.
 	ErrNoPasswdEntries = errors.New("no matching entries in passwd file")
-	ErrNoGroupEntries  = errors.New("no matching entries in group file")
+	// ErrNoGroupEntries returns when there is no matching group
+	// entries found in file.
+	ErrNoGroupEntries = errors.New("no matching entries in group file")
 )
 
 func lookupUser(filter func(u User) bool) (User, error) {

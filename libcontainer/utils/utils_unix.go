@@ -8,6 +8,7 @@ import (
 	"syscall"
 )
 
+// CloseExecFrom sets fds larger than minFd FD_CLOEXEC flag.
 func CloseExecFrom(minFd int) error {
 	fdList, err := ioutil.ReadDir("/proc/self/fd")
 	if err != nil {

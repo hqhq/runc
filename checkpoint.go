@@ -94,11 +94,11 @@ func setManageCgroupsMode(context *cli.Context, options *libcontainer.CriuOpts) 
 	if cgOpt := context.String("manage-cgroups-mode"); cgOpt != "" {
 		switch cgOpt {
 		case "soft":
-			options.ManageCgroupsMode = libcontainer.CRIU_CG_MODE_SOFT
+			options.ManageCgroupsMode = libcontainer.CriuCgModeSoft
 		case "full":
-			options.ManageCgroupsMode = libcontainer.CRIU_CG_MODE_FULL
+			options.ManageCgroupsMode = libcontainer.CriuCgModeFull
 		case "strict":
-			options.ManageCgroupsMode = libcontainer.CRIU_CG_MODE_STRICT
+			options.ManageCgroupsMode = libcontainer.CriuCgModeStrict
 		default:
 			fatal(fmt.Errorf("Invalid manage cgroups mode"))
 		}

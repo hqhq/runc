@@ -5,23 +5,27 @@ package libcontainer
 // cgroup restoring strategy provided by criu
 type cgMode uint32
 
+// CRIU cgroup restoring modes.
 const (
-	CRIU_CG_MODE_SOFT    cgMode = 3 + iota // restore cgroup properties if only dir created by criu
-	CRIU_CG_MODE_FULL                      // always restore all cgroups and their properties
-	CRIU_CG_MODE_STRICT                    // restore all, requiring them to not present in the system
-	CRIU_CG_MODE_DEFAULT                   // the same as CRIU_CG_MODE_SOFT
+	CriuCgModeSoft    cgMode = 3 + iota // restore cgroup properties if only dir created by criu
+	CriuCgModeFull                      // always restore all cgroups and their properties
+	CriuCgModeStrict                    // restore all, requiring them to not present in the system
+	CriuCgModeDefault                   // the same as CriuCgModeSoft
 )
 
+// CriuPageServerInfo contains information of CRIU page server.
 type CriuPageServerInfo struct {
 	Address string // IP address of CRIU page server
 	Port    int32  // port number of CRIU page server
 }
 
+// VethPairName contains veth pair names on host and container.
 type VethPairName struct {
 	ContainerInterfaceName string
 	HostInterfaceName      string
 }
 
+// CriuOpts contains information for CRIU operations.
 type CriuOpts struct {
 	ImagesDirectory         string             // directory for storing image files
 	WorkDirectory           string             // directory to cd and write logs/pidfiles/stats to

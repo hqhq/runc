@@ -15,10 +15,12 @@ Note! These are NOT the same as the MAJOR(dev_t device);, MINOR(dev_t device); a
 
 */
 
+// Major returns the major number of device from the given device number.
 func Major(devNumber int) int64 {
 	return int64((devNumber >> 8) & 0xfff)
 }
 
+// Minor returns the minor number of device from the given device number.
 func Minor(devNumber int) int64 {
 	return int64((devNumber & 0xff) | ((devNumber >> 12) & 0xfff00))
 }

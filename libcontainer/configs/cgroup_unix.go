@@ -2,14 +2,17 @@
 
 package configs
 
+// FreezerState represents the freezer state.
 type FreezerState string
 
+// Freezer states.
 const (
 	Undefined FreezerState = ""
 	Frozen    FreezerState = "FROZEN"
 	Thawed    FreezerState = "THAWED"
 )
 
+// Cgroup contains information for all cgroup operations.
 type Cgroup struct {
 	// Deprecated, use Path instead
 	Name string `json:"name,omitempty"`
@@ -33,6 +36,7 @@ type Cgroup struct {
 	*Resources
 }
 
+// Resources contains all resource limit fields in cgroup.
 type Resources struct {
 	// If this is true allow access to any kind of device within the container.  If false, allow access only to devices explicitly listed in the allowed_devices list.
 	// Deprecated
